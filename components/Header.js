@@ -1,23 +1,32 @@
+import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
 
 import StyledNavLink from "./StyledNavLink";
 
 export default function Header() {
+  const router = useRouter();
+
   return (
     <StyledHeader>
       <StyledNav>
         <Link href="/" passHref>
-          <StyledNavLink>Home</StyledNavLink>
+          <StyledNavLink active={router.pathname === "/"}>Home</StyledNavLink>
         </Link>
         <Link href="/product" passHref>
-          <StyledNavLink>Product</StyledNavLink>
+          <StyledNavLink active={router.pathname === "/product"}>
+            Product
+          </StyledNavLink>
         </Link>
         <Link href="/team" passHref>
-          <StyledNavLink>Team</StyledNavLink>
+          <StyledNavLink active={router.pathname === "/team"}>
+            Team
+          </StyledNavLink>
         </Link>
         <Link href="/account" passHref>
-          <StyledNavLink>Account</StyledNavLink>
+          <StyledNavLink active={router.pathname === "/account"}>
+            Account
+          </StyledNavLink>
         </Link>
       </StyledNav>
     </StyledHeader>
